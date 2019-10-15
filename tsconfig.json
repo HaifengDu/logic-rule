@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "module": "es2015",
+        "outDir":"resource/",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "experimentalDecorators": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noUnusedLocals": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters":true,
+        "suppressImplicitAnyIndexErrors": true,
+        "allowSyntheticDefaultImports": true,
+    },
+    "exclude": [
+        "node_modules",
+        "**/*/__test__/*"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ],
+    "compileOnSave": false
+}
