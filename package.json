@@ -1,6 +1,6 @@
 {
   "name": "logic-rule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Logical rules",
   "main": "dist/logic-rule.js",
   "module": "dist/logic-rule.es.js",
