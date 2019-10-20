@@ -1,3 +1,4 @@
+import { isPromise } from "./util";
 var Rule = (function () {
     function Rule(operator) {
         this.rules = [];
@@ -6,7 +7,7 @@ var Rule = (function () {
         }
     }
     Rule.getCheckCb = function (operator) {
-        return typeof operator === "function" ? operator : function () { return !!operator; };
+        return typeof operator === "function" ? operator : function () { return isPromise(operator) ? operator : !!operator; };
     };
     Rule.only = function (cb) {
         throw new Error("only(" + cb + ") method is not implemented");

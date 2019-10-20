@@ -5,13 +5,19 @@ import "../OrRule";
 import Rule from "../Rule";
 
 describe("Logic Rule test", () => {
-    it("should create rule correctly", () => {
+    it("should create rule correctly", async () => {
         const onlyRule = Rule.only(() => true);
         expect(onlyRule.execute()).toBe(true);
         const onlyRule2 = new OnlyRule(() => false);
         expect(onlyRule2.execute()).toBe(false);
         const onlyRule3 = Rule.only(false);
         expect(onlyRule3.execute()).toBe(false);
+        const onlyRule4 = Rule.only(Promise.resolve(true));
+        const onlyRule4Result = await onlyRule4.execute();
+        expect(onlyRule4Result).toBe(true);
+        const onlyRule5 = Rule.only(() => Promise.resolve(false));
+        const onlyRule5Result = await onlyRule5.execute();
+        expect(onlyRule5Result).toBe(false);
 
         const andRule = Rule.and(null, null);
         expect(() => andRule.execute()).toThrow();
@@ -86,7 +92,7 @@ describe("Logic Rule test", () => {
             return new Promise(resolve => {
                 setTimeout(() => {
                     resolve(false);
-                }, 100);
+                }, 60);
             });
         });
         const onlyRule2 = Rule.only(true);
@@ -94,7 +100,7 @@ describe("Logic Rule test", () => {
             return new Promise(resolve => {
                 setTimeout(() => {
                     resolve(true);
-                }, 100);
+                }, 60);
             });
         });
         const result = await onlyRule.and(onlyRule2).execute();

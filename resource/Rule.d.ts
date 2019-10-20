@@ -3,7 +3,7 @@ export declare abstract class Rule {
     protected checkCb: INoop;
     protected rules: Array<Rule>;
     private static getCheckCb;
-    static only(cb: INoop | boolean): Rule;
+    static only(cb: INoop | boolean | Promise<boolean>): Rule;
     static and(rule1: Rule, rule2: Rule): Rule;
     static not(rule1: Rule): Rule;
     static or(rule1: Rule, rule2: Rule): Rule;

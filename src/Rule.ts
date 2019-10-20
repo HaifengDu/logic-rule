@@ -1,14 +1,15 @@
 import { INoop } from "./interface/INoop";
+import { isPromise } from "./util";
 
 export abstract class Rule{
     protected checkCb: INoop;
     protected rules: Array<Rule> = [];
 
     private static getCheckCb(operator){
-        return typeof operator === "function" ? operator : () => !!operator;
+        return typeof operator === "function" ? operator : () => isPromise(operator) ? operator : !!operator;
     }
 
-    static only(cb: INoop|boolean): Rule{
+    static only(cb: INoop|boolean|Promise<boolean>): Rule{
         throw new Error(`only(${cb}) method is not implemented`);
     }
 

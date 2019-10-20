@@ -11,6 +11,6 @@ export default class OnlyRule extends Rule {
     }
 }
 
-Rule.only = function(cb: INoop|boolean){
+Rule.only = function(cb: INoop|boolean|Promise<boolean>){
     return new OnlyRule(this.getCheckCb(cb));
 };

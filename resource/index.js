@@ -1,4 +1,4 @@
-require("./lib/promise.auto.js");
+import "./lib/promise.auto.js";
 import AndRule from "./AndRule";
 import NotRule from "./NotRule";
 import OnlyRule from "./OnlyRule";
